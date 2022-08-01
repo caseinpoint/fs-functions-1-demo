@@ -1,7 +1,5 @@
 // In this file, we'll continue with our soccer simulation.
-
 // So recently we talked about a soccer match between the Emerald Eagles and the Draconian Dragons. We used conditional logic to determine soccer match scenarios, and used arrays to manage Mahalia’s backpack. But, there are more than one match in a season. Do we really want to rewrite the same blocks of code over and over again?
-
 // This is where functions come in. Functions allow us to perform the same block of code many times, without having to rewrite the entire block of code. They even allow us to take in parameters to slightly modify the data that the function uses.
 
 // First, let’s practice with data types and string methods. Then we’ll get into writing functions.
@@ -11,28 +9,25 @@ let eaglesMorale = 100;
 
 // How would we make this into a string? 
 let eaglesMoraleStr = String(eaglesMorale);
-// - or, by concatenating an empty string:
-// eaglesMoraleStr = eaglesMorale + '';
+// Or, by concatenating an empty string:
+// let eaglesMoraleStr = eaglesMorale + '';
 console.log(eaglesMorale, typeof eaglesMorale);
 consoel.log(eaglesMoraleStr, typeof eaglesMoraleStr);
 
 // How would we make eaglesMorale into a boolean?
 let eaglesMoraleBool = Boolean(eaglesMorale);
 consoel.log(eaglesMoraleBool, typeof eaglesMoraleBool);
-
+// Remember: the only value for eaglesMorale that would give us false would be 0
 
 // Let’s create a string that declares a winner. The winner should be the Dragons.
-
 // Then let’s replace the Dragons with the Eagles.
 let theWinnerIs = 'The Dragons are the winners.';
 let newWinner = theWinnerIs.replace('Dragons', 'Eagles');
-// console.log(newWinner);
 
 // Now let’s just confirm that our string contains ‘The Eagles’
 console.log(newWinner.includes('Eagles'));
 
 // Now we have to convert our string to kebab case (all lowercase separated by hyphens)
-// The Eagles are the winners. → the-eagles-are-the-winners.
 let newWinnerLower = newWinner.toLowerCase();
 let newWinnerSplit = newWinnerLower.split(' ');
 let newWinnerKebab = newWinnerSplit.join('-');
@@ -42,6 +37,7 @@ let newWinnerKebab = newWinnerSplit.join('-');
 //                               .join('-');
 // Note: the semicolon is only after the very last method call.
 console.log(newWinnerKebab);
+
 
 // Now, let’s create a simple function to see if the Emerald Eagles still have morale left, and then console.log the result.
 function doEaglesHaveMorale() {
@@ -79,21 +75,19 @@ reduceMorale = (amount) => {
     eaglesMorale -= amount;
     doEaglesHaveMorale();
 };
-// Note: it is presented here again in a linear fashion, but you should go up and modify the original function to avoid getting an error.
 
 reduceMorale(33);
 reduceMorale(33);
 reduceMorale(34);
 
 // Yes, you can call functions from almost anywhere, including from inside another function.
-
 // It is important to know that functions can be set up to have as many parameters as you would like. In this next function, we will use two.
 
 // Let’s create another function that allows 2 teams to shake hands with each other.
 const shakeHands = function(team1, team2) {
     console.log(`The ${team1} and the ${team2} shake hands.`);
 };
-shakeHands('Eagle', 'Dragons');
+shakeHands('Eagles', 'Dragons');
 
 // FURTHER STUDY:
 
@@ -119,4 +113,4 @@ function diceMultiplier() {
     return firstRoll * secondRoll;
 }
 let multipliedNumber = diceMultiplier();
-// Note: the firstRoll and secondRoll variables above are scoped to the diceMultiplier function, and are not related to the variables with the same name in the previous prompt.
+// Note: the firstRoll and secondRoll variables above are scoped to the diceMultiplier function, and are not related to the variables with the same name in the outer scope.
