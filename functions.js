@@ -99,6 +99,7 @@ function rollDice() {
 }
 let firstRoll = rollDice();
 let secondRoll = rollDice();
+console.log(firstRoll, secondRoll);
 
 // Further study on Math.floor:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
@@ -113,4 +114,5 @@ function diceMultiplier() {
     return firstRoll * secondRoll;
 }
 let multipliedNumber = diceMultiplier();
+console.log(multipliedNumber);
 // Note: the firstRoll and secondRoll variables above are scoped to the diceMultiplier function, and are not related to the variables with the same name in the outer scope.
