@@ -12,8 +12,14 @@ let eaglesMorale = 100;
 // How would we make this into a string? 
 let eaglesMoraleStr = String(eaglesMorale);
 // - or, by concatenating an empty string:
-eaglesMoraleStr = eaglesMorale + '';
-console.log(eaglesMorale, eaglesMoraleStr);
+// eaglesMoraleStr = eaglesMorale + '';
+console.log(eaglesMorale, typeof eaglesMorale);
+consoel.log(eaglesMoraleStr, typeof eaglesMoraleStr);
+
+// How would we make eaglesMorale into a boolean?
+let eaglesMoraleBool = Boolean(eaglesMorale);
+consoel.log(eaglesMoraleBool, typeof eaglesMoraleBool);
+
 
 // Let’s create a string that declares a winner. The winner should be the Dragons.
 
@@ -52,7 +58,7 @@ function doEaglesHaveMorale() {
 doEaglesHaveMorale();
 
 // Now, let’s create a function that can be used every time the Eagles lose a match.
-const reduceMorale = (amount) => {
+let reduceMorale = (amount) => {
     eaglesMorale -= amount;
 };
 
@@ -69,7 +75,7 @@ reduceMorale(6);
 doEaglesHaveMorale();
 
 // Thinking about it further, shouldn’t we check to see if the Eagles still have morale after each time they lose a match? We could call the doEaglesHaveMorale function after each time they lose. But, there is an easier way to do that. Modify your reduceMorale function to call doEaglesHaveMorale after it has run all its other code.
-const reduceMorale = (amount) => {
+reduceMorale = (amount) => {
     eaglesMorale -= amount;
     doEaglesHaveMorale();
 };
