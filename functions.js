@@ -8,8 +8,12 @@
 
 // Create a variable that tracks the Eagles’ morale.
 let eaglesMorale = 100;
-let eaglesMoraleTwo = Boolean(eaglesMorale);
-// console.log(eaglesMorale, eaglesMoraleTwo);
+
+// How would we make this into a string? 
+let eaglesMoraleStr = String(eaglesMorale);
+// - or, by concatenating an empty string:
+eaglesMoraleStr = eaglesMorale + '';
+console.log(eaglesMorale, eaglesMoraleStr);
 
 // Let’s create a string that declares a winner. The winner should be the Dragons.
 
@@ -19,18 +23,19 @@ let newWinner = theWinnerIs.replace('Dragons', 'Eagles');
 // console.log(newWinner);
 
 // Now let’s just confirm that our string contains ‘The Eagles’
-// console.log(newWinner.includes('Eagles'));
+console.log(newWinner.includes('Eagles'));
 
 // Now we have to convert our string to kebab case (all lowercase separated by hyphens)
 // The Eagles are the winners. → the-eagles-are-the-winners.
 let newWinnerLower = newWinner.toLowerCase();
 let newWinnerSplit = newWinnerLower.split(' ');
 let newWinnerKebab = newWinnerSplit.join('-');
-// or, with method chaining:
+// Or, with method chaining:
 // let newWinnerKebab = newWinner.toLowerCase()
 //                               .split(' ')
 //                               .join('-');
-// console.log(newWinnerKebab);
+// Note: the semicolon is only after the very last method call.
+console.log(newWinnerKebab);
 
 // Now, let’s create a simple function to see if the Emerald Eagles still have morale left, and then console.log the result.
 function doEaglesHaveMorale() {
@@ -41,31 +46,34 @@ function doEaglesHaveMorale() {
     }
 }
 
+// So now, at any point in time, we can call this function we have just created in order to find out if the Eagles have any fight left in them.
+
 // So we have written this function, but you might notice, it has not actually run yet. This is because functions do not run until they are called. Let’s call the above function.
-// doEaglesHaveMorale();
+doEaglesHaveMorale();
 
 // Now, let’s create a function that can be used every time the Eagles lose a match.
-// const reduceMorale = (amount) => {
-//     eaglesMorale -= amount;
-// };
+const reduceMorale = (amount) => {
+    eaglesMorale -= amount;
+};
 
 // Let’s have the Emerald Eagles lose an important match. A match worth 20 morale.
-// reduceMorale(20);
+reduceMorale(20);
 
 // With our function, we can call our block of code over and over again. Call the function again, because the Eagles just lost another match worth 12 morale.
-// reduceMorale(12);
+reduceMorale(12);
 
 // If that wasn’t all, the Eagles lost a third match. However, they were already expecting to lose, so this match is only 6 morale.
-// reduceMorale(6);
+reduceMorale(6);
 
 // At this point the Emerald Eagles have lost a few times. It would probably be a good time to check and make sure they are still up for matches. Call your doEaglesHaveMorale function.
-// doEaglesHaveMorale();
+doEaglesHaveMorale();
 
 // Thinking about it further, shouldn’t we check to see if the Eagles still have morale after each time they lose a match? We could call the doEaglesHaveMorale function after each time they lose. But, there is an easier way to do that. Modify your reduceMorale function to call doEaglesHaveMorale after it has run all its other code.
 const reduceMorale = (amount) => {
     eaglesMorale -= amount;
     doEaglesHaveMorale();
 };
+// Note: it is presented here again in a linear fashion, but you should go up and modify the original function to avoid getting an error.
 
 reduceMorale(33);
 reduceMorale(33);
@@ -80,3 +88,29 @@ const shakeHands = function(team1, team2) {
     console.log(`The ${team1} and the ${team2} shake hands.`);
 };
 shakeHands('Eagle', 'Dragons');
+
+// FURTHER STUDY:
+
+// So far, we have just been console logging in our functions. But, functions can actually return a value back to its call site. Let’s create a function to represent a dice role.
+function rollDice() {
+    let possibleRoles = [1,2,3,4,5,6];
+    let randomNumber = Math.floor(Math.random() * possibleRoles.length);
+    return possibleRoles[randomNumber];
+}
+let firstRoll = rollDice();
+let secondRoll = rollDice();
+
+// Further study on Math.floor:
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
+// Further study on Math.random:
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+
+// Now, let’s take this one step further. Let’s create a function that calls rollDice twice, and multiplies the returned rolls together.
+function diceMultiplier() {
+    let firstRoll = rollDice();
+    let secondRoll = rollDice();
+  
+    return firstRoll * secondRoll;
+}
+let multipliedNumber = diceMultiplier();
+// Note: the firstRoll and secondRoll variables above are scoped to the diceMultiplier function, and are not related to the variables with the same name in the previous prompt.
